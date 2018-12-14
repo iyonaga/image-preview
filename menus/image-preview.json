@@ -2,8 +2,8 @@
   "context-menu": {
     "atom-text-editor": [
       {
-        "label": "Toggle image-preview",
-        "command": "image-preview:toggle"
+        "label": "Show Image Preview",
+        "command": "image-preview:show"
       }
     ]
   },
@@ -15,8 +15,8 @@
           "label": "image-preview",
           "submenu": [
             {
-              "label": "Toggle",
-              "command": "image-preview:toggle"
+              "label": "Show",
+              "command": "image-preview:show"
             }
           ]
         }
