@@ -6,7 +6,7 @@
   "keywords": [
   ],
   "activationCommands": {
-    "atom-workspace": "image-preview:toggle"
+    "atom-workspace": "image-preview:show"
   },
   "repository": "https://github.com/atom/image-preview",
   "license": "MIT",

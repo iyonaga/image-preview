@@ -1,5 +1,5 @@
 {
   "atom-workspace": {
-    "ctrl-alt-o": "image-preview:toggle"
+    "ctrl-alt-p": "image-preview:show"
   }
 }
