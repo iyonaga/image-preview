@@ -5,13 +5,22 @@
 @import "ui-variables";
 
 .image-preview {
-  background: red;
-  height: 100px;
-  width: 100px;
+  background-color: @overlay-background-color;
+  padding: 8px 12px 12px;
+  width: 300px;
+
+  .actions {}
 
   .btn-close {
-    background: blue;
-    height: 30px;
-    width: 30px;
+    // height: 30px;
+    // width: 30px;
+  }
+
+  .image-container {
+    margin-top: 8px;
+
+    img {
+      max-width: 100%;
+    }
   }
 }
