@@ -1,12 +1,4 @@
 {
-  "context-menu": {
-    "atom-text-editor": [
-      {
-        "label": "Show Image Preview",
-        "command": "image-preview:show"
-      }
-    ]
-  },
   "menu": [
     {
       "label": "Packages",
