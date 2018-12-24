@@ -22,9 +22,59 @@
 
   .image-container {
     margin-top: 8px;
+    min-height: 40px;
+    position: relative;
 
     img {
       max-width: 100%;
+    }
+  }
+
+  .spinner {
+    animation: loading 1.4s infinite linear;
+    background: linear-gradient(to right, @text-color 10%, rgba(255, 255, 255, 0) 42%);
+    border-radius: 50%;
+    bottom: 0;
+    height: 30px;
+    left: 0;
+    margin: auto;
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 30px;
+
+    &:before {
+      background: @text-color;
+      border-radius: 100% 0 0 0;
+      content: '';
+      height: 50%;
+      left: 0;
+      position: absolute;
+      top: 0;
+      width: 50%;
+    }
+
+    &:after {
+      background: @overlay-background-color;
+      border-radius: 50%;
+      bottom: 0;
+      content: '';
+      height: 80%;
+      left: 0;
+      margin: auto;
+      position: absolute;
+      right: 0;
+      top: 0;
+      width: 80%;
+    }
+  }
+
+  @keyframes loading {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
     }
   }
 }
