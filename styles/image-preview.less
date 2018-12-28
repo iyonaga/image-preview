@@ -13,11 +13,19 @@
   top: 5px;
   width: 300px;
 
-  .actions {}
+  .actions {
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+  }
 
-  .btn-close {
-    // height: 30px;
-    // width: 30px;
+  .pagination {
+    align-items: center;
+    display: flex;
+  }
+
+  .pagination-text {
+    margin: auto 4px;
   }
 
   .image-container {
@@ -26,7 +34,12 @@
     position: relative;
 
     img {
+      display: none;
       max-width: 100%;
+
+      &.is-active {
+        display: block;
+      }
     }
   }
 
