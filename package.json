@@ -2,9 +2,12 @@
   "name": "image-preview",
   "main": "./lib/image-preview",
   "version": "0.0.0",
-  "description": "A short description of your package",
-  "keywords": [],
-  "repository": "https://github.com/atom/image-preview",
+  "description": "Preview images embedded in css, sass, scss, less, or markdown files.",
+  "keywords": [
+    "preview",
+    "image"
+  ],
+  "repository": "https://github.com/iyonaga/image-preview",
   "license": "MIT",
   "engines": {
     "atom": ">=1.0.0 <2.0.0"
