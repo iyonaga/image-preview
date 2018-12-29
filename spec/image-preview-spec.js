@@ -1,6 +1,6 @@
 'use babel';
 
-import ImagePreview from '../lib/image-preview';
+import path from 'path';
 
 // Use the command `window:run-package-specs` (cmd-alt-ctrl-p) to run specs.
 //
@@ -8,65 +8,43 @@ import ImagePreview from '../lib/image-preview';
 // or `fdescribe`). Remove the `f` to unfocus the block.
 
 describe('ImagePreview', () => {
-  let workspaceElement, activationPromise;
+  let workspaceElement, editor, editorElement;
 
   beforeEach(() => {
     workspaceElement = atom.views.getView(atom.workspace);
-    activationPromise = atom.packages.activatePackage('image-preview');
+    // atom.project.setPaths([path.dirname(__dirname)]);
+    waitsForPromise(() => atom.packages.activatePackage('language-css'));
+    waitsForPromise(() =>
+      atom.workspace
+        .open(path.join(__dirname, 'assets', 'test.css'))
+        .then(e => {
+          editor = e;
+        })
+    );
+    waitsForPromise(() => atom.packages.activatePackage('image-preview'));
+
+    runs(() => {
+      // editor = atom.workspace.getActiveTextEditor();
+      editorElement = atom.views.getView(editor);
+      jasmine.attachToDOM(workspaceElement);
+    });
   });
 
-  describe('when the image-preview:toggle event is triggered', () => {
-    it('hides and shows the modal panel', () => {
-      // Before the activation event the view is not on the DOM, and no panel
-      // has been created
-      expect(workspaceElement.querySelector('.image-preview')).not.toExist();
-
-      // This is an activation event, triggering it will cause the package to be
-      // activated.
-      atom.commands.dispatch(workspaceElement, 'image-preview:toggle');
-
-      waitsForPromise(() => {
-        return activationPromise;
-      });
+  describe('when the image-preview:show event is triggered', () => {
+    it('shows css image link', () => {
+      editor.setCursorBufferPosition([1, 25]);
+      waitsForPromise(() =>
+        atom.commands.dispatch(editorElement, 'image-preview:show')
+      );
 
       runs(() => {
-        expect(workspaceElement.querySelector('.image-preview')).toExist();
-
-        let imagePreviewElement = workspaceElement.querySelector('.image-preview');
-        expect(imagePreviewElement).toExist();
-
-        let imagePreviewPanel = atom.workspace.panelForItem(imagePreviewElement);
-        expect(imagePreviewPanel.isVisible()).toBe(true);
-        atom.commands.dispatch(workspaceElement, 'image-preview:toggle');
-        expect(imagePreviewPanel.isVisible()).toBe(false);
-      });
-    });
-
-    it('hides and shows the view', () => {
-      // This test shows you an integration test testing at the view level.
-
-      // Attaching the workspaceElement to the DOM is required to allow the
-      // `toBeVisible()` matchers to work. Anything testing visibility or focus
-      // requires that the workspaceElement is on the DOM. Tests that attach the
-      // workspaceElement to the DOM are generally slower than those off DOM.
-      jasmine.attachToDOM(workspaceElement);
-
-      expect(workspaceElement.querySelector('.image-preview')).not.toExist();
-
-      // This is an activation event, triggering it causes the package to be
-      // activated.
-      atom.commands.dispatch(workspaceElement, 'image-preview:toggle');
-
-      waitsForPromise(() => {
-        return activationPromise;
-      });
-
-      runs(() => {
-        // Now we can test for view visibility
-        let imagePreviewElement = workspaceElement.querySelector('.image-preview');
-        expect(imagePreviewElement).toBeVisible();
-        atom.commands.dispatch(workspaceElement, 'image-preview:toggle');
-        expect(imagePreviewElement).not.toBeVisible();
+        // console.log(editorElement.querySelector('.image-preview'));
+        expect(editorElement.querySelector('.image-preview')).toExist();
+        expect(
+          editorElement.querySelector(
+            `img[src="${path.join(__dirname, 'assets', 'sample.jpg')}"]`
+          )
+        ).toExist();
       });
     });
   });

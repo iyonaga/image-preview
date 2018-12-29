@@ -10,8 +10,8 @@
     "atom": ">=1.0.0 <2.0.0"
   },
   "scripts": {
-    "lint": "eslint 'lib/**/*.js' --format codeframe",
-    "lint:fix": "prettier-eslint --write 'lib/**/*.js'"
+    "lint": "eslint '{lib,spec}/**/*.js' --format codeframe",
+    "lint:fix": "prettier-eslint --write '{lib,spec}/**/*.js'"
   },
   "husky": {
     "hooks": {
