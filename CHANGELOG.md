@@ -1,4 +1,7 @@
-## 0.2
+## 0.2.1
+* Tweak style
+
+## 0.2.0
 * Add background color change button
 
 ## 0.1.1
