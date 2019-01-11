@@ -1,3 +1,7 @@
+## 0.3.0
+* Add support for HTML tags
+* Update menu label
+
 ## 0.2.1
 * Tweak style
 
