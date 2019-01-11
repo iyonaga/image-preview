@@ -2,7 +2,7 @@
   "name": "image-preview",
   "main": "./lib/image-preview",
   "version": "0.2.1",
-  "description": "Preview images embedded in css, sass, scss, less, or markdown files.",
+  "description": "Preview images embedded in html, css, sass, scss, less, or markdown files.",
   "keywords": [
     "preview",
     "image"
