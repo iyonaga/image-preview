@@ -1,3 +1,6 @@
+## 0.4.0
+* Add support for protocol-relative URL
+
 ## 0.3.0
 * Add support for HTML tags
 * Update menu label
